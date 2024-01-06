@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:QuanLyRung.ResourceXAML"
+                    xmlns:viewmodel="clr-namespace:QuanLyRung.ViewModel">
+    <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
+    <viewmodel:TreeViewModel x:Key="TreeVM"></viewmodel:TreeViewModel>
+    <viewmodel:WoodViewModel x:Key="WoodVM"></viewmodel:WoodViewModel>
+    <viewmodel:SupplierTreeViewModel x:Key="SupplierTreeVM"></viewmodel:SupplierTreeViewModel>
+    <viewmodel:SupplierWoodViewModel x:Key="SupplierWoodVM"></viewmodel:SupplierWoodViewModel>
+    <viewmodel:StorageAnimalViewModel x:Key="StorageAnimalVM"></viewmodel:StorageAnimalViewModel>
+    <viewmodel:UsersViewModel x:Key="UsersVM"></viewmodel:UsersViewModel>
+    <viewmodel:AnimalViewModel x:Key="AnimalVM"></viewmodel:AnimalViewModel>
+</ResourceDictionary>

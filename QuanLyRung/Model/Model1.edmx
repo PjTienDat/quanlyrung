@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QuanLyCSDLTaiNguyenRungModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar(max)" />
+          <Property Name="Count" Type="int" />
+          <Property Name="IdStorageAnimal" Type="int" />
+          <Property Name="StatusAnimal" Type="nvarchar(max)" />
+          <Property Name="DateInput" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StorageAnimal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar(max)" />
+          <Property Name="Adress" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SupplierTree">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar(max)" />
+          <Property Name="Adress" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SupplierWood">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar(max)" />
+          <Property Name="Adress" Type="nvarchar(max)" />
+          <Property Name="Typess" Type="nvarchar(max)" />
+          <Property Name="Form" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tree">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar(max)" />
+          <Property Name="Count" Type="int" />
+          <Property Name="IdSupplierTree" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Wood">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar(max)" />
+          <Property Name="Count" Type="int" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdSupplierWood" Type="int" />
+          <Property Name="DateInput" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Animal__IdStorag__76969D2E">
+          <End Role="StorageAnimal" Type="Self.StorageAnimal" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StorageAnimal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="IdStorageAnimal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tree__IdSupplier__3B75D760">
+          <End Role="SupplierTree" Type="Self.SupplierTree" Multiplicity="0..1" />
+          <End Role="Tree" Type="Self.Tree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierTree">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tree">
+              <PropertyRef Name="IdSupplierTree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wood__IdSupplier__01142BA1">
+          <End Role="SupplierWood" Type="Self.SupplierWood" Multiplicity="0..1" />
+          <End Role="Wood" Type="Self.Wood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierWood">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wood">
+              <PropertyRef Name="IdSupplierWood" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyCSDLTaiNguyenRungModelStoreContainer">
+          <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StorageAnimal" EntityType="Self.StorageAnimal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierTree" EntityType="Self.SupplierTree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierWood" EntityType="Self.SupplierWood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tree" EntityType="Self.Tree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wood" EntityType="Self.Wood" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Animal__IdStorag__76969D2E" Association="Self.FK__Animal__IdStorag__76969D2E">
+            <End Role="StorageAnimal" EntitySet="StorageAnimal" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tree__IdSupplier__3B75D760" Association="Self.FK__Tree__IdSupplier__3B75D760">
+            <End Role="SupplierTree" EntitySet="SupplierTree" />
+            <End Role="Tree" EntitySet="Tree" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wood__IdSupplier__01142BA1" Association="Self.FK__Wood__IdSupplier__01142BA1">
+            <End Role="SupplierWood" EntitySet="SupplierWood" />
+            <End Role="Wood" EntitySet="Wood" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLyCSDLTaiNguyenRungModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QuanLyCSDLTaiNguyenRungEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Animal" EntityType="QuanLyCSDLTaiNguyenRungModel.Animal" />
+          <EntitySet Name="StorageAnimal" EntityType="QuanLyCSDLTaiNguyenRungModel.StorageAnimal" />
+          <EntitySet Name="SupplierTree" EntityType="QuanLyCSDLTaiNguyenRungModel.SupplierTree" />
+          <EntitySet Name="SupplierWood" EntityType="QuanLyCSDLTaiNguyenRungModel.SupplierWood" />
+          <EntitySet Name="sysdiagrams" EntityType="QuanLyCSDLTaiNguyenRungModel.sysdiagrams" />
+          <EntitySet Name="Tree" EntityType="QuanLyCSDLTaiNguyenRungModel.Tree" />
+          <EntitySet Name="Users" EntityType="QuanLyCSDLTaiNguyenRungModel.Users" />
+          <EntitySet Name="Wood" EntityType="QuanLyCSDLTaiNguyenRungModel.Wood" />
+          <AssociationSet Name="FK__Animal__IdStorag__76969D2E" Association="QuanLyCSDLTaiNguyenRungModel.FK__Animal__IdStorag__76969D2E">
+            <End Role="StorageAnimal" EntitySet="StorageAnimal" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tree__IdSupplier__3B75D760" Association="QuanLyCSDLTaiNguyenRungModel.FK__Tree__IdSupplier__3B75D760">
+            <End Role="SupplierTree" EntitySet="SupplierTree" />
+            <End Role="Tree" EntitySet="Tree" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wood__IdSupplier__01142BA1" Association="QuanLyCSDLTaiNguyenRungModel.FK__Wood__IdSupplier__01142BA1">
+            <End Role="SupplierWood" EntitySet="SupplierWood" />
+            <End Role="Wood" EntitySet="Wood" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="IdStorageAnimal" Type="Int32" />
+          <Property Name="StatusAnimal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateInput" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StorageAnimal" Relationship="QuanLyCSDLTaiNguyenRungModel.FK__Animal__IdStorag__76969D2E" FromRole="Animal" ToRole="StorageAnimal" />
+        </EntityType>
+        <EntityType Name="StorageAnimal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Animal" Relationship="QuanLyCSDLTaiNguyenRungModel.FK__Animal__IdStorag__76969D2E" FromRole="StorageAnimal" ToRole="Animal" />
+        </EntityType>
+        <EntityType Name="SupplierTree">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tree" Relationship="QuanLyCSDLTaiNguyenRungModel.FK__Tree__IdSupplier__3B75D760" FromRole="SupplierTree" ToRole="Tree" />
+        </EntityType>
+        <EntityType Name="SupplierWood">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Typess" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Form" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Wood" Relationship="QuanLyCSDLTaiNguyenRungModel.FK__Wood__IdSupplier__01142BA1" FromRole="SupplierWood" ToRole="Wood" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tree">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="IdSupplierTree" Type="Int32" />
+          <NavigationProperty Name="SupplierTree" Relationship="QuanLyCSDLTaiNguyenRungModel.FK__Tree__IdSupplier__3B75D760" FromRole="Tree" ToRole="SupplierTree" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Wood">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdSupplierWood" Type="Int32" />
+          <Property Name="DateInput" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SupplierWood" Relationship="QuanLyCSDLTaiNguyenRungModel.FK__Wood__IdSupplier__01142BA1" FromRole="Wood" ToRole="SupplierWood" />
+        </EntityType>
+        <Association Name="FK__Animal__IdStorag__76969D2E">
+          <End Type="QuanLyCSDLTaiNguyenRungModel.StorageAnimal" Role="StorageAnimal" Multiplicity="0..1" />
+          <End Type="QuanLyCSDLTaiNguyenRungModel.Animal" Role="Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StorageAnimal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="IdStorageAnimal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tree__IdSupplier__3B75D760">
+          <End Type="QuanLyCSDLTaiNguyenRungModel.SupplierTree" Role="SupplierTree" Multiplicity="0..1" />
+          <End Type="QuanLyCSDLTaiNguyenRungModel.Tree" Role="Tree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierTree">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tree">
+              <PropertyRef Name="IdSupplierTree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wood__IdSupplier__01142BA1">
+          <End Type="QuanLyCSDLTaiNguyenRungModel.SupplierWood" Role="SupplierWood" Multiplicity="0..1" />
+          <End Type="QuanLyCSDLTaiNguyenRungModel.Wood" Role="Wood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierWood">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wood">
+              <PropertyRef Name="IdSupplierWood" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLyCSDLTaiNguyenRungModelStoreContainer" CdmEntityContainer="QuanLyCSDLTaiNguyenRungEntities">
+          <EntitySetMapping Name="Animal">
+            <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.Animal">
+              <MappingFragment StoreEntitySet="Animal">
+                <ScalarProperty Name="DateInput" ColumnName="DateInput" />
+                <ScalarProperty Name="StatusAnimal" ColumnName="StatusAnimal" />
+                <ScalarProperty Name="IdStorageAnimal" ColumnName="IdStorageAnimal" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StorageAnimal">
+            <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.StorageAnimal">
+              <MappingFragment StoreEntitySet="StorageAnimal">
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierTree">
+            <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.SupplierTree">
+              <MappingFragment StoreEntitySet="SupplierTree">
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierWood">
+            <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.SupplierWood">
+              <MappingFragment StoreEntitySet="SupplierWood">
+                <ScalarProperty Name="Form" ColumnName="Form" />
+                <ScalarProperty Name="Typess" ColumnName="Typess" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tree">
+            <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.Tree">
+              <MappingFragment StoreEntitySet="Tree">
+                <ScalarProperty Name="IdSupplierTree" ColumnName="IdSupplierTree" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wood">
+            <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.Wood">
+              <MappingFragment StoreEntitySet="Wood">
+                <ScalarProperty Name="DateInput" ColumnName="DateInput" />
+                <ScalarProperty Name="IdSupplierWood" ColumnName="IdSupplierWood" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyCSDLTaiNguyenRungModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Animal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="Count" Type="int" />
+    <Property Name="IdStorageAnimal" Type="int" />
+    <Property Name="StatusAnimal" Type="nvarchar(max)" />
+    <Property Name="DateInput" Type="datetime" />
+  </EntityType>
+  <EntityType Name="StorageAnimal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="Adress" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SupplierTree">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="Adress" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SupplierWood">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="Adress" Type="nvarchar(max)" />
+    <Property Name="Typess" Type="nvarchar(max)" />
+    <Property Name="Form" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tree">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="Count" Type="int" />
+    <Property Name="IdSupplierTree" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Wood">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="Count" Type="int" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="IdSupplierWood" Type="int" />
+    <Property Name="DateInput" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__Animal__IdStorag__76969D2E">
+    <End Role="StorageAnimal" Type="Self.StorageAnimal" Multiplicity="0..1" />
+    <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StorageAnimal">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Animal">
+        <PropertyRef Name="IdStorageAnimal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tree__IdSupplier__3B75D760">
+    <End Role="SupplierTree" Type="Self.SupplierTree" Multiplicity="0..1" />
+    <End Role="Tree" Type="Self.Tree" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierTree">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tree">
+        <PropertyRef Name="IdSupplierTree" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Wood__IdSupplier__01142BA1">
+    <End Role="SupplierWood" Type="Self.SupplierWood" Multiplicity="0..1" />
+    <End Role="Wood" Type="Self.Wood" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierWood">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Wood">
+        <PropertyRef Name="IdSupplierWood" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanLyCSDLTaiNguyenRungModelStoreContainer">
+    <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StorageAnimal" EntityType="Self.StorageAnimal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupplierTree" EntityType="Self.SupplierTree" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupplierWood" EntityType="Self.SupplierWood" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tree" EntityType="Self.Tree" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wood" EntityType="Self.Wood" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Animal__IdStorag__76969D2E" Association="Self.FK__Animal__IdStorag__76969D2E">
+      <End Role="StorageAnimal" EntitySet="StorageAnimal" />
+      <End Role="Animal" EntitySet="Animal" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tree__IdSupplier__3B75D760" Association="Self.FK__Tree__IdSupplier__3B75D760">
+      <End Role="SupplierTree" EntitySet="SupplierTree" />
+      <End Role="Tree" EntitySet="Tree" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Wood__IdSupplier__01142BA1" Association="Self.FK__Wood__IdSupplier__01142BA1">
+      <End Role="SupplierWood" EntitySet="SupplierWood" />
+      <End Role="Wood" EntitySet="Wood" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

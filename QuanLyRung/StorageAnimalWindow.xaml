@@ -1,0 +1,102 @@
+﻿<Window x:Class="QuanLyRung.StorageAnimalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyRung"
+        mc:Ignorable="d"
+        
+                                   xmlns:uc="clr-namespace:QuanLyRung.UserControlDat"
+        
+        
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+   TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+TextElement.FontWeight="Regular"
+TextElement.FontSize="13"
+TextOptions.TextFormattingMode="Ideal"
+TextOptions.TextRenderingMode="Auto"
+        AllowsTransparency="True"
+        Background="Transparent"
+FontFamily="{DynamicResource MaterialDesignFont}"
+   ResizeMode="NoResize"
+   WindowStyle="None"
+   WindowStartupLocation="CenterScreen"
+        
+        
+        x:Name="window"
+        DataContext="{StaticResource StorageAnimalVM}"
+       Title="Cơ sở lưu trữ động vật" Height="750" Width="950">
+
+    <Border CornerRadius="15">
+        <Border
+      CornerRadius="15"
+      BorderThickness="2">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462ad8" Offset="0"/>
+                    <GradientStop Color="#da34ae" Offset="0.5"/>
+                    <GradientStop Color="#8a16c1" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#060531" Offset="0"/>
+                    <GradientStop Color="#1b1448" Offset="0.75"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=window}"></uc:ControlBarUC>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--cac muc-->
+                    <materialDesign:Card Grid.Row="0" Margin="5" Background="#FF36C3BE">
+                <WrapPanel>
+                            <TextBox Foreground="Black" Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Cơ sở lưu trữ " Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBox Foreground="Black" Text="{Binding Adress, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Địa chỉ cơ sở lưu trữ " Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <!--them xoa sua-->
+                    <materialDesign:Card Grid.Row="1" Margin="5" Background="#FF36C3BE">
+                <WrapPanel>
+                            <Button Background="#FF1E8E37" Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
+                            <Button Background="#FF1E8E37" Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
+                            <Button Background="#FF1E8E37" Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <!--hien thi-->
+            <materialDesign:Card Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                        <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Cơ sở lưu trữ" DisplayMemberBinding="{Binding DisplayName}" Width="150"></GridViewColumn>
+                                <GridViewColumn Header="Địa chỉ cơ sở lưu trữ " DisplayMemberBinding="{Binding Adress}" Width="200"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListViewItem}">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                            </ListView>
+                </ScrollViewer>
+
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+    </Border>
+    </Border>
+</Window>

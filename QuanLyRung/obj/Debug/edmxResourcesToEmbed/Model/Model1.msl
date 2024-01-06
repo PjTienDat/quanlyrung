@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuanLyCSDLTaiNguyenRungModelStoreContainer" CdmEntityContainer="QuanLyCSDLTaiNguyenRungEntities">
+    <EntitySetMapping Name="Animal">
+      <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.Animal">
+        <MappingFragment StoreEntitySet="Animal">
+          <ScalarProperty Name="DateInput" ColumnName="DateInput" />
+          <ScalarProperty Name="StatusAnimal" ColumnName="StatusAnimal" />
+          <ScalarProperty Name="IdStorageAnimal" ColumnName="IdStorageAnimal" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StorageAnimal">
+      <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.StorageAnimal">
+        <MappingFragment StoreEntitySet="StorageAnimal">
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierTree">
+      <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.SupplierTree">
+        <MappingFragment StoreEntitySet="SupplierTree">
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierWood">
+      <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.SupplierWood">
+        <MappingFragment StoreEntitySet="SupplierWood">
+          <ScalarProperty Name="Form" ColumnName="Form" />
+          <ScalarProperty Name="Typess" ColumnName="Typess" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tree">
+      <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.Tree">
+        <MappingFragment StoreEntitySet="Tree">
+          <ScalarProperty Name="IdSupplierTree" ColumnName="IdSupplierTree" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wood">
+      <EntityTypeMapping TypeName="QuanLyCSDLTaiNguyenRungModel.Wood">
+        <MappingFragment StoreEntitySet="Wood">
+          <ScalarProperty Name="DateInput" ColumnName="DateInput" />
+          <ScalarProperty Name="IdSupplierWood" ColumnName="IdSupplierWood" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

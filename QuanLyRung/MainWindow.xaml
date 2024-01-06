@@ -1,0 +1,223 @@
+﻿<Window x:Class="QuanLyRung.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyRung"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        
+           xmlns:uc="clr-namespace:QuanLyRung.UserControlDat"
+   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+   TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+TextElement.FontWeight="Regular"
+TextElement.FontSize="13"
+TextOptions.TextFormattingMode="Ideal"
+TextOptions.TextRenderingMode="Auto"
+Background="Transparent"
+AllowsTransparency="True"
+MouseDown="Window_MouseDown"
+FontFamily="{DynamicResource MaterialDesignFont}"
+   ResizeMode="NoResize"
+   WindowStyle="None"
+   WindowStartupLocation="CenterScreen"
+        
+                Name="mainWindow"
+         DataContext="{StaticResource MainVM}"
+        Title="" Height="500" Width="800">
+
+    <Border CornerRadius="15">
+        <Border.Background>
+            <ImageBrush ImageSource="/Image/anhnen1.jpg"></ImageBrush>
+        </Border.Background>
+        <Border
+             CornerRadius="15"
+             BorderThickness="2"
+            Opacity="0.8">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462ad8" Offset="0"/>
+                    <GradientStop Color="#da34ae" Offset="0.5"/>
+                    <GradientStop Color="#8a16c1" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#FF715CB7" Offset="0"/>
+                    <GradientStop Color="#FF6148B1" Offset="0.6"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=mainWindow}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <uc:ControlBarUC Tag="{Binding Title, ElementName=mainWindow}"></uc:ControlBarUC>
+                </Grid>
+
+
+
+
+                <Grid Grid.Row="1" Background="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="139*"></ColumnDefinition>
+                        <ColumnDefinition Width="120*"></ColumnDefinition>
+                        <ColumnDefinition Width="139*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <!--phan 1-->
+                    <Grid Grid.Column="0" Background="Transparent">
+
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="0,0,0,105"></Grid>
+                            <Grid Margin="0,183,0,0" Grid.RowSpan="2">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <Grid Margin="23,-20,17,-26">
+                                        <Button Command="{Binding TreeCommand}" 
+                                      Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                       Height="50"
+                                        materialDesign:ButtonAssist.CornerRadius="25"
+                                        ToolTip="Cây giống" Margin="55,50,-57,40" Background="#FF44D796" BorderBrush="Black">
+                                            <TextBlock Text="Cây giống" FontSize="18" Foreground="#DD000000" />
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid Grid.Row="1">
+                                    <Grid Width="124">
+                                        <Button Command="{Binding WoodCommand}" 
+                                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                       Height="50"
+                                       materialDesign:ButtonAssist.CornerRadius="25"
+                                    ToolTip="Cây gỗ" Margin="1,21,-117,23" Background="#FF44D796">
+                                            <TextBlock Text="Cây gỗ" FontSize="18" Foreground="#DD000000" />
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+
+                                <Grid Grid.Row="2">
+                                    <Grid Width="124">
+                                        <Button Command="{Binding AnimalCommand}"
+                                           Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                            Height="50"
+                                            materialDesign:ButtonAssist.CornerRadius="25"
+                                            ToolTip="Động vật" Margin="1,21,-117,23" BorderBrush="Black" Background="#FF44D796">
+                                            <TextBlock Text="Động vật" FontSize="18" Foreground="#DD000000" />
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+
+
+                    <!--nguoi dung-->
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" >
+                            <materialDesign:PackIcon Foreground="White" Kind="AccountCircleOutline" Height="163" Width="250" HorizontalAlignment="Center" Margin="0,-2,0,0" />
+                         </Grid>
+
+                        
+                        <Grid Grid.Row="1"  RenderTransformOrigin="0.5,0.788">
+                            <Grid Width="124">
+                                <Button Command="{Binding UserCommand}"
+                                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                    materialDesign:ButtonAssist.CornerRadius="25"
+                                    ToolTip="USER" Margin="-8,-75,-8,268" FontSize="20" Background="#FF1E50D5" BorderBrush="Black">
+                                    <TextBlock Text="USER" Foreground="#DD000000"/>
+                                </Button>
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
+
+                    <!--phan 2-->
+                    <Grid Grid.Column="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="0,0,0,105"></Grid>
+
+                            <Grid Margin="0,183,0,0" Grid.RowSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <Grid Margin="23,0,32,0">
+                                        <Button Command="{Binding SupplierTreeCommand}"
+                                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                     Height="50"
+                                      materialDesign:ButtonAssist.CornerRadius="25"
+                                      ToolTip="Cơ sở sản xuất cây giống" Background="#FF44D796" Margin="-63,30,46,14" BorderBrush="Black">
+                                            <TextBlock Text="Cơ sở sản xuất cây giống" FontSize="18" Foreground="#DD000000" />
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+
+
+                                <Grid Grid.Row="1">
+                                    <Grid
+                                           Width="124">
+                                        <Button Command="{Binding SupplierWoodCommand}" 
+                                      Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                        Height="50"
+                                    materialDesign:ButtonAssist.CornerRadius="25"
+                                      ToolTip="Cơ sở sản xuất gỗ" Background="#FF44D796" Margin="-117,22,1,22" BorderBrush="Black">
+                                            <TextBlock
+                                          Text="Cơ sở sản xuất gỗ" FontSize="18" Foreground="#DD000000" />
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+
+
+                                <Grid Grid.Row="2">
+                                    <Grid Width="124">
+                                        <Button Command="{Binding StorageAnimalCommand}" 
+                                      Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                       Height="50"
+                                      materialDesign:ButtonAssist.CornerRadius="25"
+                                  ToolTip="Cơ sở lưu trữ động vật" Background="#FF44D796" Margin="-117,22,1,22" BorderBrush="Black">
+                                            <TextBlock Text="Cơ sở lưu trữ động vật" FontSize="18" Foreground="#DD000000" />
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+
+
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Border>
+    </Border>
+</Window>
